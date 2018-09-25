@@ -13,8 +13,7 @@
 
 use App\User;
 Route::get('/', function () {
-	$users = User::all();
-	dd($users);
+	return view('welcome');
 });
 
 
