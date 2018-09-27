@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use App\Category;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,11 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['_share.header', '_share.footer'], function ($view) {
-            
-            $menuValue = 'Thế giới';
-            $view->with('menuValue', $menuValue);
-
+        View::composer('layouts.client._share.header', function ($view) {
+            $menus = Category::all();
+            $view->with('menus', $menus);
         });
     }
 
