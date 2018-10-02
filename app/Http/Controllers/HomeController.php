@@ -18,4 +18,9 @@ class HomeController extends Controller
 
     	return view('welcome', ['posts' => $posts]);
     }
+
+    public function postsByCategory($cateId){
+        $posts = Post::where('cate_id', $cateId)->paginate(20);
+        return view('welcome', ['posts' => $posts]);
+    }
 }

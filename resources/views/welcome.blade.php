@@ -16,9 +16,7 @@
             <div class="col-md-6">
                 <div class="post-single">
                     <ul class="post-cat">
-                        <li><a href="#">interface</a>
-                        </li>
-                        <li><a href="#">standard</a>
+                        <li><a href="{{ route('post.by.cate', ['cateId' => $p->category->id]) }}">{{$p->category->name}}</a>
                         </li>
                     </ul>
                     <div class="post-img">

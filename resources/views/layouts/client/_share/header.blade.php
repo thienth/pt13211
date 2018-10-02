@@ -17,7 +17,7 @@
                     </li>
                     @foreach ($menus as $m)
                     <li class="">
-                        <a href="javascript:void(0)">{{$m->name}}</a>
+                        <a href="{{ route('post.by.cate', ['cateId' => $m->id]) }}">{{$m->name}}</a>
                     </li>
                     @endforeach
                     <li>

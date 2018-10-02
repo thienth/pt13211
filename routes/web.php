@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index')->name('homepage');
 
+Route::get('danh-muc/{cateId}', 'HomeController@postsByCategory')->name('post.by.cate');
 
 
 
