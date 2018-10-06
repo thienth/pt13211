@@ -16,7 +16,7 @@
           <th>Danh mục</th>
           <th>Ảnh</th>
           <th>
-          	<a href="" class="btn btn-xs btn-success">Thêm bài viết</a>
+          	<a href="{{ route('post.add') }}" class="btn btn-xs btn-success">Thêm bài viết</a>
           </th>
         </tr>
         @foreach ($posts as $p)
@@ -30,8 +30,10 @@
 	          	<img src="{{$p->image}}" width="100">
 	          </td>
 	          <td>
-	          	<a href="" class="btn btn-xs btn-primary">Sửa</a>
-	          	<a href="" class="btn btn-xs btn-danger">Xoá</a>
+	          	<a href="{{ route('post.edit', ['id' => $p->id]) }}" class="btn btn-xs btn-primary">Sửa</a>
+	          	<a href="javascript:void(0);" 
+                linkurl="{{ route('post.delete', ['id' => $p->id]) }}" 
+                class="btn btn-xs btn-danger btn-remove">Xoá</a>
 	          </td>
 	        </tr>
         @endforeach
@@ -40,14 +42,20 @@
   	  </table>
     </div>
     <!-- /.box-body -->
-    <div class="box-footer clearfix">
-      <ul class="pagination pagination-sm no-margin pull-right">
-        <li><a href="#">«</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">»</a></li>
-      </ul>
+    <div class="box-footer clearfix text-center">
+      {{$posts->links()}}
     </div>
   </div>
+@endsection
+@section('js')
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.btn-remove').on('click', function(){
+        var conf = confirm('Bạn có chắc chắn muốn xoá bài viết này hay không ?');
+        if(conf){
+          window.location.href = $(this).attr('linkurl');
+        }
+      });
+    });
+  </script>
 @endsection
