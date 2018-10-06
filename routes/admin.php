@@ -8,6 +8,7 @@ Route::group(['prefix' => 'bai-viet'], function(){
 
 	Route::get('them', 'PostController@add')->name('post.add');
 	Route::get('sua/{id}', 'PostController@edit')->name('post.edit');
+	Route::post('save', 'PostController@save')->name('post.save');
 
 });
  ?>

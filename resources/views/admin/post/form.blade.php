@@ -6,8 +6,10 @@
 @section('pagename', $title);
 @section('content')
 	<form enctype="multipart/form-data"
-			action=""
+			action="{{ route('post.save') }}"
 			method="post">
+		@csrf
+		<input type="hidden" name="id" value="{{$post->id}}">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
@@ -41,7 +43,7 @@
 			<div class="col-md-6">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<img src="{{$post->image}}" class="img-responsive">
+						<img id="imageTarget" src="{{$post->image}}" class="img-responsive">
 					</div>
 				</div>
 				<div class="form-group">
@@ -54,7 +56,7 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<label>Mô tả ngắn</label>
-					<textarea class="form-control" name="short_desc" rows="5"></textarea>
+					<textarea class="form-control" name="short_desc" rows="5">{!! $post->short_desc !!}</textarea>
 				</div>
 			</div>
 		</div>
@@ -62,7 +64,7 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<label>Nội dung</label>
-					<textarea id="content" class="form-control" name="content" rows="15"></textarea>
+					<textarea id="content" class="form-control" name="content" rows="15">{!! $post->content !!}</textarea>
 				</div>
 			</div>
 		</div>
@@ -72,13 +74,33 @@
 			<button type="submit" class="btn btn-sm btn-primary">Lưu</button>
 		</div>
 	</form>
-
-
 @endsection
 
 @section('js')
 	<script type="text/javascript">
 		CKEDITOR.replace('content');
+
+		function getBase64(file, selector) {
+		    var reader = new FileReader();
+		    reader.readAsDataURL(file);
+		    reader.onload = function () {
+		    	// console.log(reader.result);
+		      $(selector).attr('src', reader.result);
+		    };
+		    reader.onerror = function (error) {
+		       console.log('Error: ', error);
+		    };
+	  	}
+
+		  var img = document.querySelector('[name="image"]');
+		  img.onchange = function(){
+		    var file = this.files[0];
+		    if(file == undefined){
+		      $('#imageTarget').attr('src', '{{asset('img/default.jpg')}}');
+		    }else{
+		      getBase64(file, '#imageTarget');
+		    }
+		  }
 	</script>
 @endsection
 

@@ -51,4 +51,16 @@ class PostController extends Controller
     	}
     	return redirect(route('post.list'));
     }
+
+    public function save(Request $request){
+    	if($request->id == null){
+    		$model = new Post();
+    	}else{
+    		$model = Post::find($request->id);
+    	}
+
+    	$model->fill($request->all());
+    	$model->save();
+    	return redirect(route('post.list'));
+    }
 }
