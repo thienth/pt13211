@@ -27,7 +27,7 @@
 	          	{{$p->category->name}}
 	          </td>
 	          <td>
-	          	<img src="{{$p->image}}" width="100">
+	          	<img src="{{asset($p->image)}}" width="100">
 	          </td>
 	          <td>
 	          	<a href="{{ route('post.edit', ['id' => $p->id]) }}" class="btn btn-xs btn-primary">Sửa</a>

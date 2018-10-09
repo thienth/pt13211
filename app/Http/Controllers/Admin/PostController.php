@@ -60,6 +60,26 @@ class PostController extends Controller
     	}
 
     	$model->fill($request->all());
+
+        if ($request->hasFile('image')) {
+            // lay ra duoi anh
+            $ext = $request->image->extension();
+
+            // lay ten anh go
+            $filename = $request->image->getClientOriginalName();
+
+            // sinh ra ten anh moi theo dang slug
+            $filename = str_slug(str_replace("." . $ext, "", $filename));
+            
+            // ten anh + string random + duoi
+            $filename = $filename . "-" . str_random(20) . "." . $ext;
+
+            // luu anh 
+            $path = $request->image->storeAs('bai-viet', $filename);
+            // gan gia tri duong anh anh moi vao trong model
+            $model->image = "uploaded/$path";
+        }
+
     	$model->save();
     	return redirect(route('post.list'));
     }

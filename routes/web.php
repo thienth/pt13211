@@ -19,7 +19,3 @@ Route::get('danh-muc/{cateId}', 'HomeController@postsByCategory')->name('post.by
 
 
 
-
-
-
-
