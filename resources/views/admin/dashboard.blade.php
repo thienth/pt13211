@@ -29,7 +29,7 @@
         <div class="icon">
           <i class="fa fa-file-word-o"></i>
         </div>
-        <a href="#" class="small-box-footer">Quản lý <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{ route('post.list') }}" class="small-box-footer">Quản lý <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->

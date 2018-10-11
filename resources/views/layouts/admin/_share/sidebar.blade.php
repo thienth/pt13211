@@ -39,6 +39,22 @@
           </li>
         </ul>
       </li>
+      <li class=" treeview">
+        <a href="#">
+          <i class="fa fa-file-word-o"></i> <span>Quản lý bài viết</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="">
+            <a href="{{ route('post.list') }}"><i class="fa fa-circle-o"></i> Danh sách</a>
+          </li>
+          <li class="">
+            <a href="{{ route('post.add') }}"><i class="fa fa-circle-o"></i> Thêm bài viết</a>
+          </li>
+        </ul>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->

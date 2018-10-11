@@ -15,6 +15,9 @@
 				<div class="form-group">
 					<label>Tiêu đề</label>
 					<input type="text" name="title" class="form-control" value="{{$post->title}}">
+					@if($errors)
+						<span class="text-danger">{{$errors->first('title')}}</span>
+					@endif
 				</div>
 				<div class="form-group">
 					<label>Danh mục</label>

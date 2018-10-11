@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Category;
+use Illuminate\Validation\Rule;
+
 class PostController extends Controller
 {
     public function index(){
@@ -53,6 +55,21 @@ class PostController extends Controller
     }
 
     public function save(Request $request){
+        $validatedData = $request->validate([
+                'title' => [
+                    'required',
+                    Rule::unique('posts')->ignore($request->id),
+                    'max:191'
+                ]
+            ],
+            [
+                'title.required' => 'Vui lòng nhập tiêu đề',
+                'title.unique' => 'Tiêu đề đã tồn tại',
+                'title.max' => 'Độ dài tối đa không vượt quá 191 ký tự'
+            ]
+        );
+
+
     	if($request->id == null){
     		$model = new Post();
     	}else{
