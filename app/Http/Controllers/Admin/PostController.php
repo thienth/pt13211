@@ -53,19 +53,21 @@ class PostController extends Controller
     	}
     	return redirect(route('post.list'));
     }
-    
+
     public function save(Request $request){
         $validatedData = $request->validate([
                 'title' => [
                     'required',
                     Rule::unique('posts')->ignore($request->id),
                     'max:191'
-                ]
+                ],
+                'image' => 'image'
             ],
             [
                 'title.required' => 'Vui lòng nhập tiêu đề',
                 'title.unique' => 'Tiêu đề đã tồn tại',
-                'title.max' => 'Độ dài tối đa không vượt quá 191 ký tự'
+                'title.max' => 'Độ dài tối đa không vượt quá 191 ký tự',
+                'image.image' => 'Yêu cầu định dạng file ảnh'
             ]
         );
 

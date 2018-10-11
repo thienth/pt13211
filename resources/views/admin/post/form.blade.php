@@ -52,6 +52,9 @@
 				<div class="form-group">
 					<label>Ảnh bài viết</label>
 					<input type="file" name="image" class="form-control" >
+					@if($errors)
+						<span class="text-danger">{{$errors->first('image')}}</span>
+					@endif
 				</div>
 			</div>
 		</div>
