@@ -53,7 +53,7 @@ class PostController extends Controller
     	}
     	return redirect(route('post.list'));
     }
-
+    
     public function save(Request $request){
         $validatedData = $request->validate([
                 'title' => [

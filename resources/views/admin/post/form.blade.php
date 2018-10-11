@@ -14,7 +14,7 @@
 			<div class="col-md-6">
 				<div class="form-group">
 					<label>Tiêu đề</label>
-					<input type="text" name="title" class="form-control" value="{{$post->title}}">
+					<input type="text" name="title" class="form-control" value="{{old('title', $post->title)}}">
 					@if($errors)
 						<span class="text-danger">{{$errors->first('title')}}</span>
 					@endif
