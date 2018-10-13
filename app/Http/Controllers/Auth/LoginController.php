@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -43,7 +44,13 @@ class LoginController extends Controller
     }
 
     public function postLogin(Request $request){
-        dd($request->all());
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            return redirect(route('dashboard'));
+        }
+
+        return redirect(route('login'))->withErrors([
+            'msg' => 'Email/mật khẩu không chính xác'
+        ]);
     }
 
     public function logout(){
