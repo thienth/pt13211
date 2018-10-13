@@ -15,6 +15,11 @@ Route::get('/', 'HomeController@index')->name('homepage');
 
 Route::get('danh-muc/{cateId}', 'HomeController@postsByCategory')->name('post.by.cate');
 
+Route::get('login', 'Auth\LoginController@login')->name('login');
+Route::post('login', 'Auth\LoginController@postLogin');
+
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
 
 
 
