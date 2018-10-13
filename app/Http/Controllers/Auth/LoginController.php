@@ -44,7 +44,8 @@ class LoginController extends Controller
     }
 
     public function postLogin(Request $request){
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+        $rem = $request->remember == 1 ? true : false;
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password], $rem)){
             return redirect(route('dashboard'));
         }
 
