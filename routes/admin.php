@@ -1,5 +1,6 @@
 <?php 
 
+    
 Route::get('/', 'DashboardController@index')->name('dashboard');
 Route::group(['prefix' => 'bai-viet'], function(){
 	// danh sach bai viet
@@ -11,4 +12,6 @@ Route::group(['prefix' => 'bai-viet'], function(){
 	Route::post('save', 'PostController@save')->name('post.save');
 
 });
+
+
  ?>

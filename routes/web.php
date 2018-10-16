@@ -19,6 +19,7 @@ Route::get('login', 'Auth\LoginController@login')->name('login');
 Route::post('login', 'Auth\LoginController@postLogin');
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::view('forbiden', '403')->name('forbiden');
 
 
 
